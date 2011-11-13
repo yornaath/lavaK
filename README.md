@@ -79,4 +79,11 @@ ender build lavaK
 or
 ender add lavaK
 ```
+The lavaK API is then available at the ender global $ or can be required with enders require function.
+
+```javascript
+var lavaK = require('lavaK') //require
+//or
+$.lavaK
+```
 
