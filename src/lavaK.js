@@ -4,7 +4,7 @@
   else this[name] = definition();  
 }('lavaK', function(){
   
-  var attachEvent, detachEvent, doc, keydownEvent, keyupEvent, w, keyindex, codeindex, lavakeys, keysdown, lid;
+  var attachEvent, detachEvent, doc, keydownEvent, keyupEvent, w, keyindex, codeindex, hotkeys, keysdown, lid;
 
   w = window;
   doc = document || {};
@@ -51,7 +51,7 @@
   }
 
   lid = 0; //Id for created hotkeys
-  lavakeys = { } //lavakeys hold created hotkeys
+  hotkeys = { } //hotkeys hold created hotkeys
 
   //Hold the keys down at the moment
   keysdown = { }
@@ -63,10 +63,10 @@
     for(keycode in keysdown) {
       _keysdownpattern.push(keycode)
     }
-    for(lavakey in lavakeys) {
-      if(arrayContentsMatch(lavakeys[lavakey].codepattern, _keysdownpattern)) {
-        for(_lid in lavakeys[lavakey].fns) {
-          if(lavakeys[lavakey].fns[_lid].active)lavakeys[lavakey].fns[_lid].fn.call(this)
+    for(lavakey in hotkeys) {
+      if(arrayContentsMatch(hotkeys[lavakey].codepattern, _keysdownpattern)) {
+        for(_lid in hotkeys[lavakey].fns) {
+          if(hotkeys[lavakey].fns[_lid].active)hotkeys[lavakey].fns[_lid].fn.call(this)
         };
       }
     }
@@ -88,21 +88,25 @@
         var _key = patternarray[_i]
         keycodepattern.push(keyindex[_key])
       }
-      !lavakeys[combopattern] ? lavakeys[combopattern] = {
+      !hotkeys[combopattern] ? hotkeys[combopattern] = {
         fns:{ }, codepattern: keycodepattern
       } : null;
-      lavakeys[combopattern].fns[_lid] = {
+      hotkeys[combopattern].fns[_lid] = {
         fn: fn,
         active: true
       };
       return {
         disable: function() {
-          lavakeys[combopattern].fns[_lid].active = false;
+          hotkeys[combopattern].fns[_lid].active = false;
         },
         enable: function() {
-          lavakeys[combopattern].fns[_lid].active = true;
+          hotkeys[combopattern].fns[_lid].active = true;
         }
       }
+    },
+    remove: function(combopattern) {
+      var combopattern = combopattern.toUpperCase();
+      if(hotkeys[combopattern]) delete hotkeys[combopattern];
     }
   }
 
