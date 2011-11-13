@@ -11,58 +11,28 @@
 Hotkeys for for javascript with a simple api.
 
 ## Api
-The spec here is only suggestions.  
-### hotkey.create vs new hotkey  
-This method makes it hard to reference a specific hotkey at a later time 
+The spec is simple and not set in stone.  
+
+### lavaK.add
+Takes the keycombo(string) and a associated function to execute on triggering.  
 
 ```javascript
-lavaK.create('ctrl+alt+f', find);
-lavaK.create('shift+c', function(){
+var findHotkey = lavaK.add('ctrl+alt+f', find);
+
+var computeHotkey = lavaK.add('shift+c', function(){
   //compute
   //compute
   //compute
 })
+
 ```  
-
-Object model:
-
-```javascript
-var hotkey = new LavaK('ctrl+alt+f', find);
-```  
-### deactivating hotkey  
-```javascript
-lavaK.deactivate('ctrl+alt+f')
-```  
-or:  
+Creating a new hotkey returns a lavaK object with functions for disabling the hotkey and reenabling it.  
+You can assign more than one function to a given key combo, and disable/enable them individually.
 
 ```javascript
-hotkey.deactivate()
+var findHotkey = lavaK.add('ctrl+alt+f', find);
+
+findHotkey.disable();
+
+findHotkey.enable();
 ```
-
-#### Parameters  
-Parameter list as suggested
-
-```javascript
-lavaK.create(combo, fn)
-//example
-lavaK.create('ctrl+alt+f', function(){
-  do stuff
-});
-```
-
-or:
-
-```javascript
-lavaK.create(options)
-//example
-lavaK.create({
-  combo: 'ctrl+alt+f',
-  fn: function(){
-    do stuff
-  }
-});
-```
-
-
-The api is up for discussion. You may want to be able to activate and deactivate hotkeys. I think managing states in 
-which they are active or deactivated is beyond the scope of the plugin. Lets keep it lightweight.
