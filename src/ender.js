@@ -1,5 +1,7 @@
-!function($) {
+!function() {
+  var lavaK = require('lavaK'),
+      $ = require('ender');
   $.ender({
-    lavaK: require('lavaK')
-  }, true)
-}(ender);
+    lavaK: lavaK
+  })
+}();
