@@ -8,7 +8,7 @@
    \/____/\/__/\/_/ \/__/   \/__/\/_/ \/_/\/_/
                                               
 ```
-Hotkeys for for javascript with a simple api.
+Hotkeys(hot as lava..) for javascript with a simple api.
 
 ## Api
 The spec is simple and not set in stone.  
