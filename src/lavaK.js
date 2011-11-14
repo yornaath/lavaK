@@ -1,3 +1,18 @@
+/*
+ ___                               __  __     
+/\_ \                             /\ \/\ \    
+\//\ \      __     __  __     __  \ \ \/'/'   
+  \ \ \   /'__`\  /\ \/\ \  /'__`\ \ \ , <    
+   \_\ \_/\ \L\.\_\ \ \_/ |/\ \L\.\_\ \ \\`\  
+   /\____\ \__/.\_\\ \___/ \ \__/.\_\\ \_\ \_\
+   \/____/\/__/\/_/ \/__/   \/__/\/_/ \/_/\/_/
+
+@author: Andre Tangen <@gorillatron>
+@description: A hotkey api for javascript
+@version: 0.1.3",
+@homepage: https://github.com/wtw-software/lavaK
+@license: BSD                                            
+*/
 !function (name, definition) {
   if (typeof module !== 'undefined') module.exports = definition();
   else if (typeof define == 'function' && typeof define.amd  == 'object') define(definition);
