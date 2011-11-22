@@ -1,12 +1,12 @@
 {
   "name": "lavaK",
   "description": "A hotkey api for javascript",
-  "version": "0.1.4",
+  "version": "0.1.41",
   "homepage": "https://github.com/andtan/lavaK",
   "authors": ["Andre Tangen <@gorillatron>"],
   "repository": {
     "type": "git",
-    "url": "https://andtan@github.com/wtw-software/lavaK.git"
+    "url": "https://andtan@github.com/andtan/lavaK.git"
   },
   "keywords": ["ender", "hotkeys", "keyboard", "shortcuts", "events"],
   "main": "./lavaK.min.js",
