@@ -65,7 +65,7 @@ findHotkey.disable();
 You can integrate lavaK into  your project in several ways.
 
 ```html
-<script type="text/javascript" src="./path/to/lavaK.js"></script>
+<script type="text/javascript" src="./path/to/lavaK.min.js"></script>
 ```  
 lavaK is then bound directly to the context, in this instance window. And you can access it everywhere in your code.
 This is the quick and dirty way.
