@@ -47,7 +47,7 @@
   };
 
   //Build codeindex
-  for(key in keyindex) {
+  for(var key in keyindex) {
     codeindex[keyindex[key]] = key;
   }
 
@@ -73,15 +73,15 @@
 
   //Attach keydown event
   w[attachEvent](keydownEvent, function(event) {
-    var _keysdownpattern = [], _i;
+    var _keysdownpattern = [], _i, _keycode, _lavakey, _lid;
     keysdown[event.keyCode] = true
-    for(keycode in keysdown) {
-      _keysdownpattern.push(keycode)
+    for(_keycode in keysdown) {
+      _keysdownpattern.push(_keycode)
     }
-    for(lavakey in hotkeys) {
-      if(arrayContentsMatch(hotkeys[lavakey].codepattern, _keysdownpattern)) {
-        for(_lid in hotkeys[lavakey].fns) {
-          if(hotkeys[lavakey].fns[_lid].active)hotkeys[lavakey].fns[_lid].fn.call(this)
+    for(_lavakey in hotkeys) {
+      if(arrayContentsMatch(hotkeys[_lavakey].codepattern, _keysdownpattern)) {
+        for(_lid in hotkeys[_lavakey].fns) {
+          if(hotkeys[_lavakey].fns[_lid].active)hotkeys[_lavakey].fns[_lid].fn.call(this)
         };
       }
     }
@@ -95,12 +95,10 @@
   //lavaK API
   return {
     add: function(combopattern, fn) {
-      var combopattern = combopattern.toUpperCase(),
-          patternarray = combopattern.split('+'),
-          keycodepattern = [],
-          _lid = lid++;
+      var combopattern = combopattern.toUpperCase(),patternarray = combopattern.split('+'),
+          keycodepattern = [],_key,_lid = lid++;
       for(var _i = 0, _len = patternarray.length; _i < _len; _i++) {
-        var _key = patternarray[_i]
+        _key = patternarray[_i]
         keycodepattern.push(keyindex[_key])
       }
       !hotkeys[combopattern] ? hotkeys[combopattern] = {
