@@ -64,6 +64,12 @@ findHotkey.disable();
 ## Integration
 You can integrate lavaK into  your project in several ways.
 
+### NPM/browserify
+```bash
+npm install lavaK
+```
+
+### script
 ```html
 <script type="text/javascript" src="./path/to/lavaK.min.js"></script>
 ```  
