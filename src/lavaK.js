@@ -9,8 +9,8 @@
 
 @author: Andre Tangen <@gorillatron>
 @description: A hotkey api for javascript
-@version: 0.1.31",
-@homepage: https://github.com/wtw-software/lavaK
+@version: 0.1.43",
+@homepage: https://github.com/gorillatron/lavaK
 @license: BSD                                            
 */
 !function (name, definition) {

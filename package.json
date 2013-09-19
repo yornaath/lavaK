@@ -1,7 +1,7 @@
 {
   "name": "lavaK",
   "description": "A hotkey api for javascript",
-  "version": "0.1.42",
+  "version": "0.1.43",
   "homepage": "https://github.com/gorillatron/lavaK",
   "authors": ["Andre Tangen <@gorillatron>"],
   "repository": {
