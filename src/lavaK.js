@@ -1,9 +1,9 @@
 /*
- ___                               __  __     
-/\_ \                             /\ \/\ \    
-\//\ \      __     __  __     __  \ \ \/'/'   
-  \ \ \   /'__`\  /\ \/\ \  /'__`\ \ \ , <    
-   \_\ \_/\ \L\.\_\ \ \_/ |/\ \L\.\_\ \ \\`\  
+ ___                               __  __
+/\_ \                             /\ \/\ \
+\//\ \      __     __  __     __  \ \ \/'/'
+  \ \ \   /'__`\  /\ \/\ \  /'__`\ \ \ , <
+   \_\ \_/\ \L\.\_\ \ \_/ |/\ \L\.\_\ \ \\`\
    /\____\ \__/.\_\\ \___/ \ \__/.\_\\ \_\ \_\
    \/____/\/__/\/_/ \/__/   \/__/\/_/ \/_/\/_/
 
@@ -11,14 +11,14 @@
 @description: A hotkey api for javascript
 @version: 0.1.43",
 @homepage: https://github.com/gorillatron/lavaK
-@license: BSD                                            
+@license: BSD
 */
 !function (name, definition) {
   if (typeof module !== 'undefined') module.exports = definition();
   else if (typeof define == 'function' && typeof define.amd  == 'object') define(definition);
-  else this[name] = definition();  
+  else this[name] = definition();
 }('lavaK', function(){
-  
+
   var attachEvent, detachEvent, doc, keydownEvent, keyupEvent, w, keyindex, codeindex, hotkeys, keysdown, lid;
 
   w = window;
@@ -27,11 +27,11 @@
   detachEvent = w['removeEventListener'] ? 'removeEventListener' : 'detachEvent';
   keydownEvent = w['addEventListener'] ? 'keydown' : 'onkeydown';
   keyupEvent = w['addEventListener'] ? 'keyup' : 'onkeyup';
-  
-  codeindex = { }; //Dict of: keycode->key
 
-  
-  keyindex = { //Dict of: key->keycode
+  codeindex = { }
+
+
+  keyindex = { 
     'BACKSPACE': 8, 'TAB': 9, 'ENTER': 13, 'SHIFT': 16, 'CTRL': 17, 'ALT': 18,
     'PAUSE': 19, 'CAPSLOCK': 20, 'ESC': 27, 'PAGEUP': 33, 'PAGEDOWN': 34, 'END': 35,
     'HOME': 36, 'LEFTARROW': 37, 'UPARROW': 38, 'RIGHTARROW': 39, 'DOWNARROW': 40, 'INSERT': 45,
@@ -42,22 +42,21 @@
     'Y': 89, 'Z': 90, '0NUMPAD': 96, '1NUMPAD': 97, '2NUMPAD': 98, '3NUMPAD': 99,
     '4NUMPAD': 100, '5NUMPAD': 101, '6NUMPAD': 102, '7NUMPAD': 103, '8NUMPAD': 104, '9NUMPAD': 105,
     'MULTIPLY': 106, 'PLUS': 107, 'MINUT': 109, 'DOT': 110, 'SLASH1': 111, 'F1': 112,
-    'F2': 113, 'F3': 114, 'F4': 115, 'F5': 116, 'F6': 117, 'F7': 118,'F8': 119, 'F9': 120, 
+    'F2': 113, 'F3': 114, 'F4': 115, 'F5': 116, 'F6': 117, 'F7': 118,'F8': 119, 'F9': 120,
     'F10': 121, 'F11': 122, 'F12': 123, 'EQUAL': 187, 'COMA': 188, 'SLASH': 191, 'BACKSLASH': 220
   };
 
-  //Build codeindex
   for(var key in keyindex) {
     codeindex[keyindex[key]] = key;
   }
 
-  //Helpers
+
   function arrayContentsMatch(ai, aj) {
     var match = true, _i, _j;
     if(ai.length != aj.length) return false;
     outer:
     for(_i = ai.length-1; _i >= 0; _i--) {
-      for(_j = aj.length-1; _j >= 0; _j--) {  
+      for(_j = aj.length-1; _j >= 0; _j--) {
         if(ai[_i] == aj[_j]) continue outer;
       }
       match = false;
@@ -65,13 +64,12 @@
     return match;
   }
 
-  lid = 0; //Id for created hotkeys
-  hotkeys = { } //hotkeys hold created hotkeys
+  lid = 0;
+  hotkeys = { }
 
-  //Hold the keys down at the moment
   keysdown = { }
 
-  //Attach keydown event
+
   w[attachEvent](keydownEvent, function(event) {
     var _keysdownpattern = [], _i, _keycode, _lavakey, _lid;
     keysdown[event.keyCode] = true
@@ -81,18 +79,18 @@
     for(_lavakey in hotkeys) {
       if(arrayContentsMatch(hotkeys[_lavakey].codepattern, _keysdownpattern)) {
         for(_lid in hotkeys[_lavakey].fns) {
-          if(hotkeys[_lavakey].fns[_lid].active)hotkeys[_lavakey].fns[_lid].fn.call(this)
+          if(hotkeys[_lavakey].fns[_lid].active)hotkeys[_lavakey].fns[_lid].fn.call(this, event)
         };
       }
     }
   })
 
-  //Attach keyup event
+
   w[attachEvent](keyupEvent, function(event) {
     delete keysdown[event.keyCode]
   })
 
-  //lavaK API
+
   return {
     add: function(combopattern, fn) {
       var combopattern = combopattern.toUpperCase(),patternarray = combopattern.split('+'),
@@ -124,32 +122,3 @@
   }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
- 

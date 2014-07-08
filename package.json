@@ -3,12 +3,26 @@
   "description": "A hotkey api for javascript",
   "version": "0.1.43",
   "homepage": "https://github.com/gorillatron/lavaK",
-  "authors": ["Andre Tangen <@gorillatron>"],
+  "authors": [
+    "Andre Tangen <@gorillatron>"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/gorillatron/lavaK.git"
   },
-  "keywords": ["ender", "hotkeys", "keyboard", "shortcuts", "events"],
+  "keywords": [
+    "ender",
+    "hotkeys",
+    "keyboard",
+    "shortcuts",
+    "events"
+  ],
   "main": "./lavaK.min.js",
-  "ender": "./src/ender.js"
+  "ender": "./src/ender.js",
+  "devDependencies": {
+    "del": "^0.1.1",
+    "gulp": "^3.8.5",
+    "gulp-concat": "^2.2.0",
+    "gulp-uglify": "^0.3.1"
+  }
 }
