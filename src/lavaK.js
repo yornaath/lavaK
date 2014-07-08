@@ -7,11 +7,11 @@
    /\____\ \__/.\_\\ \___/ \ \__/.\_\\ \_\ \_\
    \/____/\/__/\/_/ \/__/   \/__/\/_/ \/_/\/_/
 
-@author: Andre Tangen <@gorillatron>
-@description: A hotkey api for javascript
-@version: 0.1.43",
-@homepage: https://github.com/gorillatron/lavaK
-@license: BSD
+@author: @@AUTHOR@@
+@description: @@DESCRIPTION@@
+@version: @@VERSION@@,
+@homepage: @@HOMEPAGE@@
+@license: @@LICENSE@@
 */
 !function (name, definition) {
   if (typeof module !== 'undefined') module.exports = definition();
@@ -31,7 +31,7 @@
   codeindex = { }
 
 
-  keyindex = { 
+  keyindex = {
     'BACKSPACE': 8, 'TAB': 9, 'ENTER': 13, 'SHIFT': 16, 'CTRL': 17, 'ALT': 18,
     'PAUSE': 19, 'CAPSLOCK': 20, 'ESC': 27, 'PAGEUP': 33, 'PAGEDOWN': 34, 'END': 35,
     'HOME': 36, 'LEFTARROW': 37, 'UPARROW': 38, 'RIGHTARROW': 39, 'DOWNARROW': 40, 'INSERT': 45,

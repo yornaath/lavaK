@@ -1,8 +1,9 @@
 {
   "name": "lavaK",
   "description": "A hotkey api for javascript",
-  "version": "0.1.46",
+  "version": "0.1.47",
   "homepage": "https://github.com/gorillatron/lavaK",
+  "license": "MIT",
   "authors": [
     "Andre Tangen <@gorillatron>"
   ],
@@ -22,6 +23,7 @@
     "del": "^0.1.1",
     "gulp": "^3.8.5",
     "gulp-concat": "^2.2.0",
+    "gulp-replace": "^0.4.0",
     "gulp-uglify": "^0.3.1"
   }
 }
